@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Calendar, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -6,6 +7,16 @@ import { Badge } from "@/components/ui/badge"
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-muted/30 via-background to-muted/50">
+      {/* Hero Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://images.unsplash.com/photo-1736753365978-0b5090f90095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2031&q=80"
+          alt="Modern medical spa interior"
+          fill
+          className="object-cover opacity-10"
+          priority
+        />
+      </div>
       <div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}

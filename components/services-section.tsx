@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Zap, Sparkles, Sun, Waves, Users, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -21,7 +22,8 @@ const services = [
       "Permanent hair reduction",
       "Minimal discomfort"
     ],
-    href: "/services/laser-hair-removal"
+    href: "/services/laser-hair-removal",
+    image: "https://images.unsplash.com/photo-1659353888906-adb3e0041693?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
   },
   {
     icon: Sparkles,
@@ -33,7 +35,8 @@ const services = [
       "Collagen stimulation",
       "Natural-looking results"
     ],
-    href: "/services/anti-aging"
+    href: "/services/anti-aging",
+    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
   },
   {
     icon: Sun,
@@ -45,7 +48,8 @@ const services = [
       "Even skin tone",
       "Long-lasting results"
     ],
-    href: "/services/sunspot-removal"
+    href: "/services/sunspot-removal",
+    image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
   }
 ]
 
@@ -67,11 +71,22 @@ export function ServicesSection() {
           {services.map((service, index) => {
             const IconComponent = service.icon
             return (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 shadow-md">
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent">
-                    <IconComponent className="h-8 w-8 text-white" />
+              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 shadow-md overflow-hidden">
+                {/* Service Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+                    <IconComponent className="h-6 w-6 text-white" />
                   </div>
+                </div>
+
+                <CardHeader className="text-center pb-4">
                   <CardTitle className="text-xl font-semibold">{service.title}</CardTitle>
                   <CardDescription className="text-muted-foreground">
                     {service.description}
